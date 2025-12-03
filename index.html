@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Free UK Deed Poll Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Generate a free UK deed poll you can print and sign yourself. Simple DIY name change template for adults, created in your browser."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">Free UK Deed Poll Generator</h1>
+      <p class="site-tagline">
+        Create a simple deed poll you can print and sign yourself – for free.
+      </p>
+    </div>
+  </header>
+
+  <main class="container main-layout">
+    <section class="intro">
+      <h2>Change Your Name for Free</h2>
+      <p>
+        In the UK, you can legally change your name by signing your own deed poll.
+        This page helps you create a basic deed poll document that you can
+        print, sign and have witnessed.
+      </p>
+      <p class="disclaimer">
+        <strong>Important:</strong> This is a general DIY template and does not
+        constitute legal advice. It is designed for straightforward adult name
+        changes. If your situation is complex (children, court orders, immigration
+        issues, safety concerns, etc.), you should use a professional service.
+      </p>
+      <p class="partner-note">
+        Prefer a professionally prepared deed poll, printed and posted to you?
+        Visit our partner service:
+        <a href="https://www.ukdeedpolloffice.org/" target="_blank" rel="noopener">
+          UK Deed Poll Office
+        </a>.
+      </p>
+    </section>
+
+    <section class="form-and-output">
+      <div class="form-panel">
+        <h2>Step 1: Enter Your Details</h2>
+        <form id="deedPollForm">
+          <div class="form-group">
+            <label for="currentName">Your current full name</label>
+            <input
+              type="text"
+              id="currentName"
+              name="currentName"
+              required
+              placeholder="e.g. Sarah Louise Bennett"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="newName">Your new full name</label>
+            <input
+              type="text"
+              id="newName"
+              name="newName"
+              required
+              placeholder="e.g. Sarah Louise Carter"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Your full address</label>
+            <textarea
+              id="address"
+              name="address"
+              rows="3"
+              required
+              placeholder="House number, street, town, postcode"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="effectiveDate">
+              Date of this deed (you can change this if needed)
+            </label>
+            <input type="date" id="effectiveDate" name="effectiveDate" required />
+          </div>
+
+          <div class="form-group">
+            <label for="jurisdiction">
+              Where do you live?
+              <span class="field-note">(for wording only)</span>
+            </label>
+            <select id="jurisdiction" name="jurisdiction">
+              <option value="England and Wales">England and Wales</option>
+              <option value="Scotland">Scotland</option>
+              <option value="Northern Ireland">Northern Ireland</option>
+              <option value="United Kingdom">Elsewhere in the UK</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <h3>Witness 1</h3>
+            <label for="witness1Name">Full name</label>
+            <input
+              type="text"
+              id="witness1Name"
+              name="witness1Name"
+              placeholder="e.g. James Robert Miller"
+              required
+            />
+            <label for="witness1Address">Address</label>
+            <textarea
+              id="witness1Address"
+              name="witness1Address"
+              rows="2"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <h3>Witness 2</h3>
+            <label for="witness2Name">Full name</label>
+            <input
+              type="text"
+              id="witness2Name"
+              name="witness2Name"
+              placeholder="e.g. Rebecca Anne Hughes"
+              required
+            />
+            <label for="witness2Address">Address</label>
+            <textarea
+              id="witness2Address"
+              name="witness2Address"
+              rows="2"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Generate your deed poll
+          </button>
+        </form>
+
+        <p class="small-note">
+          Your details are processed in your browser only. Nothing is sent to a
+          server or stored.
+        </p>
+      </div>
+
+      <div class="output-panel">
+        <h2>Step 2: Your Deed Poll</h2>
+        <p class="output-hint">
+          After you click “Generate”, your deed poll will appear here. You can
+          then print it and sign it in front of your witnesses.
+        </p>
+        <div id="deedPollOutput" class="deed-output">
+          <!-- Generated deed poll will appear here -->
+        </div>
+        <div class="output-actions">
+          <button id="printButton" class="btn-secondary" disabled>
+            Print / Save as PDF
+          </button>
+        </div>
+
+        <section class="next-steps">
+          <h3>What to Do After Printing</h3>
+          <ul>
+            <li>Sign the deed poll using your new name and your old name.</li>
+            <li>Have both witnesses sign and add their full names and addresses.</li>
+            <li>Keep the original safe and make copies for organisations.</li>
+          </ul>
+          <p>
+            For detailed guides on updating your passport, employer, university,
+            NHS and more, see:
+            <a href="https://www.ukdeedpolloffice.org/" target="_blank" rel="noopener">
+              UK Deed Poll Office
+            </a>.
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-text">
+        This website provides a DIY deed poll template for straightforward adult
+        name changes in the UK. It is not a government site and does not provide
+        legal advice.
+      </p>
+      <p class="footer-text">
+        For professionally prepared deed polls and tailored guidance, visit
+        <a href="https://www.ukdeedpolloffice.org/" target="_blank" rel="noopener">
+          UK Deed Poll Office
+        </a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
 

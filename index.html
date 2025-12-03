@@ -8,7 +8,288 @@
     name="description"
     content="Generate a free UK deed poll you can print and sign yourself. Simple DIY name change template for adults, created in your browser."
   />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ====== STYLES (was styles.css) ====== */
+
+    * ,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1f2933;
+      background-color: #f5f5f7;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .site-header {
+      background: #0b7285;
+      color: #fff;
+      padding: 1.75rem 0;
+      border-bottom: 4px solid #0c8599;
+    }
+
+    .header-inner {
+      text-align: left;
+    }
+
+    .site-title {
+      margin: 0 0 0.25rem;
+      font-size: 1.8rem;
+    }
+
+    .site-tagline {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .main-layout {
+      padding: 1.75rem 0 2.5rem;
+    }
+
+    .intro {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1.5rem 1.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .intro h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .disclaimer {
+      background: #fff3cd;
+      border-radius: 0.5rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid #ffe58f;
+      font-size: 0.9rem;
+    }
+
+    .partner-note {
+      margin-top: 0.75rem;
+    }
+
+    .form-and-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .form-and-output {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .form-panel,
+    .output-panel {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .form-panel h2 {
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group h3 {
+      margin-bottom: 0.25rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .field-note {
+      font-size: 0.8rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid #cbd2e1;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #f9fafb;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #0b7285;
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(11, 114, 133, 0.2);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease,
+        opacity 0.1s ease;
+    }
+
+    .btn-primary {
+      background: #0b7285;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(11, 114, 133, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(11, 114, 133, 0.45);
+    }
+
+    .btn-secondary {
+      background: #e9ecef;
+      color: #1f2933;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .small-note {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .output-panel h2 {
+      margin-top: 0;
+    }
+
+    .output-hint {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .deed-output {
+      min-height: 260px;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      background: #fdfdfd;
+      padding: 1.25rem;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.98rem;
+      white-space: pre-wrap;
+    }
+
+    .deed-output h3 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0;
+    }
+
+    .output-actions {
+      margin-top: 0.75rem;
+    }
+
+    .next-steps {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .next-steps h3 {
+      margin-top: 0;
+    }
+
+    .site-footer {
+      border-top: 1px solid #d1d5db;
+      padding: 1.25rem 0 1.75rem;
+      background: #f9fafb;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      text-align: left;
+    }
+
+    .footer-text {
+      margin: 0.25rem 0;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .site-header,
+      .intro,
+      .form-panel,
+      .output-actions,
+      .next-steps,
+      .site-footer {
+        display: none !important;
+      }
+
+      .output-panel {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .deed-output {
+        border: none;
+        padding: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -199,7 +480,126 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script>
+    // ====== JS (was script.js) ======
+
+    function formatDateForDeed(dateStr) {
+      if (!dateStr) return "";
+      const date = new Date(dateStr);
+      if (Number.isNaN(date.getTime())) return "";
+
+      const day = date.getDate();
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const month = monthNames[date.getMonth()];
+      const year = date.getFullYear();
+
+      const j = day % 10,
+        k = day % 100;
+      let suffix = "th";
+      if (j === 1 && k !== 11) suffix = "st";
+      else if (j === 2 && k !== 12) suffix = "nd";
+      else if (j === 3 && k !== 13) suffix = "rd";
+
+      return day + suffix + " day of " + month + " " + year;
+    }
+
+    function setTodayAsDefaultDate() {
+      const dateInput = document.getElementById("effectiveDate");
+      if (!dateInput) return;
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const dd = String(today.getDate()).padStart(2, "0");
+      dateInput.value = yyyy + "-" + mm + "-" + dd;
+    }
+
+    function generateDeedPoll(event) {
+      event.preventDefault();
+
+      const currentName = document.getElementById("currentName").value.trim();
+      const newName = document.getElementById("newName").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const effectiveDate = document.getElementById("effectiveDate").value;
+      const jurisdiction = document.getElementById("jurisdiction").value;
+      const witness1Name = document.getElementById("witness1Name").value.trim();
+      const witness1Address = document.getElementById("witness1Address").value.trim();
+      const witness2Name = document.getElementById("witness2Name").value.trim();
+      const witness2Address = document.getElementById("witness2Address").value.trim();
+
+      if (!currentName || !newName || !address || !effectiveDate ||
+          !witness1Name || !witness1Address || !witness2Name || !witness2Address) {
+        alert("Please fill in all required fields before generating your deed poll.");
+        return;
+      }
+
+      const prettyDate = formatDateForDeed(effectiveDate);
+
+      const deedHtml = `
+<h3>Deed Poll</h3>
+
+THIS DEED OF CHANGE OF NAME is made this ${prettyDate}.
+
+BY ME, <strong>${currentName}</strong>, of <strong>${address.replace(/\n/g, ", ")}</strong>, currently residing in ${jurisdiction}.
+
+1. I absolutely and entirely renounce, relinquish and abandon the use of my former name of <strong>${currentName}</strong> and, in place of that name, assume, adopt and determine to take and use from the date of this deed the name of <strong>${newName}</strong>.
+
+2. I shall at all times hereafter in all records, deeds, documents and other writings, and in all actions and proceedings, as well as in all dealings and transactions and on all occasions whatsoever, use and subscribe the name of <strong>${newName}</strong> in place of my former name of <strong>${currentName}</strong>, so as to be known and distinguished by the name of <strong>${newName}</strong> only.
+
+3. I authorise and require all persons at all times to describe, address and refer to me by the name of <strong>${newName}</strong> only.
+
+IN WITNESS whereof I have hereunto signed my adopted and substituted name of <strong>${newName}</strong> and also my former name of <strong>${currentName}</strong> on the date written above.
+
+<br><br>
+
+Signed as a deed by:<br>
+______________________________<br>
+<strong>${newName}</strong><br>
+(formerly known as ${currentName})
+
+<br><br>
+
+In the presence of:
+
+<br><br>
+
+<strong>Witness 1</strong><br>
+Name: ${witness1Name}<br>
+Address: ${witness1Address.replace(/\n/g, "<br>")}<br>
+Signature: _____________________________
+
+<br><br>
+
+<strong>Witness 2</strong><br>
+Name: ${witness2Name}<br>
+Address: ${witness2Address.replace(/\n/g, "<br>")}<br>
+Signature: _____________________________
+`;
+
+      const outputDiv = document.getElementById("deedPollOutput");
+      outputDiv.innerHTML = deedHtml.trim();
+
+      const printButton = document.getElementById("printButton");
+      printButton.disabled = false;
+    }
+
+    function setup() {
+      setTodayAsDefaultDate();
+      const form = document.getElementById("deedPollForm");
+      if (form) {
+        form.addEventListener("submit", generateDeedPoll);
+      }
+      const printButton = document.getElementById("printButton");
+      if (printButton) {
+        printButton.addEventListener("click", function () {
+          window.print();
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", setup);
+  </script>
 </body>
 </html>
-
